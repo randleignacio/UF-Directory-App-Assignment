@@ -2,7 +2,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
   function($scope, Listings) {
     $scope.listings = Listings;
     $scope.detailedInfo = undefined;
-
+    $scope.obj = {};
     /*
       Implement these functions in the controller to make your application function
       as described in the assignment spec.
@@ -10,12 +10,9 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
 
 
-    $scope.addListing = function(obj) {
-      $scope.listings.push(obj);
-      // $scope.myForm.code.$setPristine();
-      // $scope.myForm.code.$setPristine(true);
-      // $scope.myField = '';
-    	//$scope.headoffice='';
+    $scope.addListing = function() {
+      $scope.listings.push($scope.obj);
+      $scope.obj={};
 
     };
     $scope.deleteListing = function(index) {
