@@ -10,6 +10,8 @@
         <!-- <h1>UF Directory App</h1> -->
         <div class="jumbotron">
           <h1 class="display-3">UF Directory App</h1>
+          <hr class="my-4">
+          <p id="desc">Search for and Add any UF buildings</p>
         </div>
       </div>
       <div class="row" ng-controller="ListingsController">
@@ -33,15 +35,21 @@
                 <th></th>
                 <th></th>
               </tr>
-              <tr ng-repeat="(index, x) in listings | filter:search ">
+              <tr ng-repeat="x in listings | filter: search ">
                 <!-- <td>
                   <button ng-if="x.expanded" ng-click="x.expanded = false">-</button>
                   <button ng-if="!x.expanded" ng-click="x.expanded = true">+</button>
                 </td> -->
                 <td>{{x.code}}</td>
                 <td>{{x.name}}</td>
-                <td><input type="button" data-ng-click="showDetails(index)" value="Info" class="btn btn-info"></td>
-                <td><input type="button" data-ng-click="deleteListing(index)" value="Remove" class="btn btn-danger"/> </td>
+                <td><button type="button" ng-click="showDetails(x)" class="btn btn-info">
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                </button>
+               </td>
+               <td><button type="button" data-ng-click="deleteListing(x.code)" class="btn btn-danger">
+                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+               </button>
+              </td>
               </tr>
               <!-- <tr ng-if="x.expanded" ng-repeat-end="">
                 <td colspan="3">{{x.coordinates}}</td>
@@ -60,34 +68,36 @@
 
               Write an HTML form that adds new listings to the directory
             -->
+            <h2>Add a new Building</h2>
             <form name = "myForm" class="form-horizontal" role="form"  ng-submit="addListing()">
+               <br>
                <div ng-model= "obj">
 	             <div class="form-group">
-	 	              <label class="col-md-2 control-label">Code</label>
+	 	              <label class="col-md-3 control-label">Code</label>
 		                <div class="col-md-4">
 			              <input type="text" class="form-control" name="code" ng-model="obj.code" />
 		                </div>
 	             </div>
                <div class="form-group">
-	 	              <label class="col-md-2 control-label">Name</label>
+	 	              <label class="col-md-3 control-label">Name</label>
 		                <div class="col-md-4">
 			              <input type="text" class="form-control" name="name" ng-model="obj.name" />
 		                </div>
 	             </div>
                <div class="form-group">
-	 	              <label class="col-md-2 control-label">Lat</label>
+	 	              <label class="col-md-3 control-label">Latitude</label>
 		                <div class="col-md-4">
 			              <input type="text" class="form-control" name="lat" ng-model="obj.coordinates.latitude" />
 		                </div>
 	             </div>
                <div class="form-group">
-	 	              <label class="col-md-2 control-label">Long</label>
+	 	              <label class="col-md-3 control-label">Longitude</label>
 		                <div class="col-md-4">
 			              <input type="text" class="form-control" name="long" ng-model="obj.coordinates.longitude" />
 		                </div>
 	             </div>
                <div class="form-group">
-	 	              <label class="col-md-2 control-label">Address</label>
+	 	              <label class="col-md-3 control-label">Address</label>
 		                <div class="col-md-4">
 			              <input type="text" class="form-control" name="address" ng-model="obj.address" />
 		                </div>
@@ -99,14 +109,12 @@
               </div> -->
                </div>
                <div class="form-group">
-		               <div style="padding-left:110px">
+		               <div style="padding-left:90px">
 			                  <input type="submit" value="Submit" class="btn btn-primary"/>
 		               </div>
 	             </div>
                <!-- <pre>listings= {{obj}}</pre> -->
               </form>
-
-
 
         </div>
         <div class="col-md-6">

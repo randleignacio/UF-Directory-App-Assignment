@@ -11,6 +11,36 @@
   text-align: center;
 }
 
+body {
+  background-color: #679C25;
+}
+
+table {
+  background-color: white;
+}
+
+#desc {
+  text-align: center;
+}
+
 .jumbotron {
   background-color: orange;
 }
+
+.form-horizontal {
+  margin: 0px 0px;
+  display: inline-block;
+}
+
+h2 {
+  color: orange;
+}
+
+/*body
+{
+background: #f49841;
+}*/
+
+/*.f1 {
+  display: inline-block;
+}*/

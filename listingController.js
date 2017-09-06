@@ -12,14 +12,19 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.addListing = function() {
       $scope.listings.push($scope.obj);
-      $scope.obj={};
+       $scope.obj={};
 
     };
-    $scope.deleteListing = function(index) {
-      $scope.listings.splice(index, 1);
+    $scope.deleteListing = function(code) {
+      for(var i=0; i< $scope.listings.length; i++){
+        if($scope.listings[i].code === code){
+          $scope.listings.splice(i,1);
+          return;
+        }
+      }
     };
-    $scope.showDetails = function(index) {
-      $scope.detailedInfo = $scope.listings[index];
+    $scope.showDetails = function(x) {
+      $scope.detailedInfo = x;
     };
 
   }
